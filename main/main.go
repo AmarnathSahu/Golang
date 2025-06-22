@@ -28,6 +28,16 @@ func Swap_Elemnts_Of_List(list []int, i, j int) []int {
 	return list
 }
 
+func Find_Longest_Words_In_List(list []string) (result string, max int) {
+	for _, value := range list {
+		if len(value) >= max {
+			max = len(value)
+			result = value
+		}
+	}
+	return result, max
+}
+
 func main() {
 	input := "AABBBDDDD"
 	result := Program_To_Get_Occurence_Character(input)
@@ -36,4 +46,10 @@ func main() {
 	list := []int{1, 2, 3, 4, 5}
 	list = Swap_Elemnts_Of_List(list, 0, 1)
 	fmt.Println(list)
+
+	listOfWords := []string{"Vacant", "Testamony", "According"}
+
+	result, max := Find_Longest_Words_In_List(listOfWords)
+
+	fmt.Printf("Longest word %v and with %d length", result, max)
 }
