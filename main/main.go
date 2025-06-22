@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 func Program_To_Get_Occurence_Character(input string) string {
@@ -28,14 +29,21 @@ func Swap_Elemnts_Of_List(list []int, i, j int) []int {
 	return list
 }
 
-func Find_Longest_Words_In_List(list []string) (result string, max int) {
+func Find_Longest_And_Smallest_Words_In_List(list []string) (longestWord string, smallestWord string) {
+	maximum, minimum := math.MinInt, math.MaxInt
 	for _, value := range list {
-		if len(value) >= max {
-			max = len(value)
-			result = value
+
+		if len(value) >= maximum {
+			maximum = len(value)
+			longestWord = value
+		}
+
+		if len(value) <= minimum {
+			minimum = len(value)
+			smallestWord = value
 		}
 	}
-	return result, max
+	return longestWord, smallestWord
 }
 
 func main() {
@@ -49,7 +57,7 @@ func main() {
 
 	listOfWords := []string{"Vacant", "Testamony", "According"}
 
-	result, max := Find_Longest_Words_In_List(listOfWords)
+	longestWord, smallestWord := Find_Longest_And_Smallest_Words_In_List(listOfWords)
 
-	fmt.Printf("Longest word %v and with %d length", result, max)
+	fmt.Printf("Longest word %v and Smallest word %v ", longestWord, smallestWord)
 }
