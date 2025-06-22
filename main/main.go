@@ -47,6 +47,17 @@ func Find_Longest_And_Smallest_Words_In_List(list []string) (string, string) {
 	return longestWord, smallestWord
 }
 
+func generatePermutations(word string, prefix string) {
+	if len(word) == 0 {
+		fmt.Printf("%v ", prefix)
+	} else {
+		for index, character := range word {
+			remaining := word[0:index] + word[index+1:]
+			generatePermutations(remaining, prefix+string(character))
+		}
+	}
+}
+
 func main() {
 	input := "AABBBDDDD"
 	result := Program_To_Get_Occurence_Character(input)
@@ -57,8 +68,10 @@ func main() {
 	fmt.Println(list)
 
 	listOfWords := []string{"Vacant", "Testamony", "According"}
-
 	longestWord, smallestWord := Find_Longest_And_Smallest_Words_In_List(listOfWords)
+	fmt.Printf("Longest word is %v And smallest word is %v \n", longestWord, smallestWord)
 
-	fmt.Printf("Longest word is %v And smallest word is %v ", longestWord, smallestWord)
+	str := "ABC"
+	fmt.Printf("Below is the generated permutation for %v \n", str)
+	generatePermutations(str, "")
 }
