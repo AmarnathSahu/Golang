@@ -59,5 +59,5 @@ func main() {
 
 	longestWord, smallestWord := Find_Longest_And_Smallest_Words_In_List(listOfWords)
 
-	fmt.Printf("Longest word %v and Smallest word %v ", longestWord, smallestWord)
+	fmt.Printf("Longest word is %v And smallest word is %v ", longestWord, smallestWord)
 }
