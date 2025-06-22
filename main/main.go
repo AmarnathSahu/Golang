@@ -29,8 +29,9 @@ func Swap_Elemnts_Of_List(list []int, i, j int) []int {
 	return list
 }
 
-func Find_Longest_And_Smallest_Words_In_List(list []string) (longestWord string, smallestWord string) {
+func Find_Longest_And_Smallest_Words_In_List(list []string) (string, string) {
 	maximum, minimum := math.MinInt, math.MaxInt
+	longestWord, smallestWord := "", ""
 	for _, value := range list {
 
 		if len(value) >= maximum {
