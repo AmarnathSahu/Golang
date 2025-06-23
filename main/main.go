@@ -84,6 +84,20 @@ func GetIntersectionFromTwoList(list1 []int, list2 []int) []int {
 	return intersectionList
 }
 
+func FirstMaximumAndSecondMaxiMum(list []int) (int, int) {
+	var firstMaximum, secondMaximum int
+	for _, value := range list {
+		if value > firstMaximum {
+			secondMaximum = firstMaximum
+			firstMaximum = value
+		} else if secondMaximum < value {
+			secondMaximum = value
+		}
+	}
+
+	return firstMaximum, secondMaximum
+}
+
 func main() {
 	input := "AABBBDDDD"
 	result := Program_To_Get_Occurence_Character(input)
@@ -107,6 +121,11 @@ func main() {
 
 	list1, list2 := []int{1, 2, 5, 6, 7}, []int{3, 8, 9, 5, 4}
 	intersectionList := GetIntersectionFromTwoList(list1, list2)
-	fmt.Printf("Intersection of two lists %v and %v is %v ", list1, list2, intersectionList)
+	fmt.Printf("Intersection of two lists %v and %v is %v \n", list1, list2, intersectionList)
+
+	firstMaximum, secondMaximum := FirstMaximumAndSecondMaxiMum(list1)
+	fmt.Printf("List %v ::: First maximum value %v and Second maximum value %v \n", list1, firstMaximum, secondMaximum)
+	firstMaximum, secondMaximum = FirstMaximumAndSecondMaxiMum(list2)
+	fmt.Printf("List %v ::: First maximum value %v and Second maximum value %v \n", list2, firstMaximum, secondMaximum)
 
 }
