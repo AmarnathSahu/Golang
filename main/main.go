@@ -67,6 +67,23 @@ func ReverseString(str string) string {
 	return string(runes)
 }
 
+func GetIntersectionFromTwoList(list1 []int, list2 []int) []int {
+	var intersectionList []int
+	lookup := make(map[int]struct{})
+
+	for _, value := range list1 {
+		lookup[value] = struct{}{}
+	}
+
+	for _, value := range list2 {
+		if _, exists := lookup[value]; exists {
+			intersectionList = append(intersectionList, value)
+		}
+	}
+
+	return intersectionList
+}
+
 func main() {
 	input := "AABBBDDDD"
 	result := Program_To_Get_Occurence_Character(input)
@@ -86,5 +103,10 @@ func main() {
 
 	str = "ABCD"
 	reverserString := ReverseString(str)
-	fmt.Printf("\nHere is the %v the generated reverse of %v ", reverserString, str)
+	fmt.Printf("\nHere is the %v, the generated reverse of %v \n", reverserString, str)
+
+	list1, list2 := []int{1, 2, 5, 6, 7}, []int{3, 8, 9, 5, 4}
+	intersectionList := GetIntersectionFromTwoList(list1, list2)
+	fmt.Printf("Intersection of two lists %v and %v is %v ", list1, list2, intersectionList)
+
 }
