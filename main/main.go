@@ -47,15 +47,24 @@ func Find_Longest_And_Smallest_Words_In_List(list []string) (string, string) {
 	return longestWord, smallestWord
 }
 
-func generatePermutations(word string, prefix string) {
+func GeneratePermutations(word string, prefix string) {
 	if len(word) == 0 {
 		fmt.Printf("%v ", prefix)
 	} else {
 		for index, character := range word {
 			remaining := word[0:index] + word[index+1:]
-			generatePermutations(remaining, prefix+string(character))
+			GeneratePermutations(remaining, prefix+string(character))
 		}
 	}
+}
+
+func ReverseString(str string) string {
+	runes := []rune(str)
+
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
+	}
+	return string(runes)
 }
 
 func main() {
@@ -73,5 +82,9 @@ func main() {
 
 	str := "ABC"
 	fmt.Printf("Below is the generated permutation for %v \n", str)
-	generatePermutations(str, "")
+	GeneratePermutations(str, "")
+
+	str = "ABCD"
+	reverserString := ReverseString(str)
+	fmt.Printf("\nHere is the %v the generated reverse of %v ", reverserString, str)
 }
